@@ -1,0 +1,31 @@
+-- CREATE TABLE users(
+--     id VARCHAR(200) PRIMARY KEY,
+--     name VARCHAR(200),
+--     email VARCHAR(200),
+--     phone_number VARCHAR(200)
+-- );
+
+-- CREATE TABLE addresses(
+--     id SERIAL PRIMARY KEY,
+--     street VARCHAR(200),
+--     city VARCHAR(200),
+--     state VARCHAR(200),
+--     zip_code VARCHAR(200),
+--     country VARCHAR(200),
+--     userId VARCHAR(200) REFERENCES users ON DELETE CASCADE
+-- );
+
+-- SELECT u.id, u.name, u.email, u.phone_number,
+--        json_agg(
+--            json_build_object(
+--                'street', a.street,
+--                'city', a.city,
+--                'state', a.state,
+--                'zip_code', a.zip_code,
+--                'country', a.country
+--            )
+--        ) AS addresses
+-- FROM users AS u
+-- LEFT JOIN addresses AS a ON a.userid = u.id
+-- WHERE u.id = '4378faf9-c869-49b3-b11c-44eeea8b1ac7'
+-- GROUP BY u.id, u.name, u.email, u.phone_number;
